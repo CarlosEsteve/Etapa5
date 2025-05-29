@@ -53,7 +53,7 @@ def headr(text):
     return ('\n'+color.UNDERLINE + text + color.END+'\n')
 
 def load_data(ruta, equipo, steps):
-    mantenimiento_df = pd.read_csv(ruta + 'Etapa4/output/merge_df.csv')
+    mantenimiento_df = pd.read_csv(ruta + '/merge_df.csv')
     mantenimiento_df_1 = mantenimiento_df[mantenimiento_df['ID_Equipo'] == equipo].copy()
     mantenimiento_df_1['Fecha'] = pd.to_datetime(mantenimiento_df_1['Fecha'], format='%Y-%m-%d')
     mantenimiento_df_1 = mantenimiento_df_1.set_index('Fecha')

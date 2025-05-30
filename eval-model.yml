@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: eval_model_metrics_etapa_5_ces
+display_name: Evaluación de Modelo y exposición de Métricas
+version: 1
+type: command
+inputs:
+  input_data: 
+    type: uri_folder
+  model_input:
+    type: mlflow_model
+outputs:
+  metrics_output:
+    type: uri_file
+code: ./src/eval-model/
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+command: >-
+  python eval-model.py
+  --input_data ${{inputs.input_data}}
+  --model_input ${{inputs.model_input}}
+  --metrics_output ${{outputs.metrics_output}}

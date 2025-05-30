@@ -1,0 +1,24 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: train_rf_model_etapa_5_ces
+display_name: Entrenamiento de Modelo Random Forest Etapa 5
+version: 2
+type: command
+inputs:
+  input_data: 
+    type: uri_folder
+  n_estimators:
+    type: number
+    default: 100
+outputs:
+  model_output:
+    type: mlflow_model
+  output_data:
+    type: uri_folder
+code: ./src/train-rf-model/
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+command: >-
+  python train-rf-model.py
+  --input_data ${{inputs.input_data}}
+  --n_estimators ${{inputs.n_estimators}}
+  --model_output ${{outputs.model_output}}
+  --output_data ${{outputs.output_data}}

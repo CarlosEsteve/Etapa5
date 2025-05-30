@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: ing_prep_data_etapa_5_ces
+display_name: Ingesta y Preprocesamiento de Datos Etapa 5
+version: 5
+type: command
+inputs:
+  input_data: 
+    type: uri_file
+  equipo_input:
+    type: number
+outputs:
+  output_data:
+    type: uri_folder
+code: ./src/ing-prep-data
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+command: >-
+  python ing-prep-data.py
+  --input_data ${{inputs.input_data}}
+  --equipo_input ${{inputs.equipo_input}}
+  --output_data ${{outputs.output_data}}

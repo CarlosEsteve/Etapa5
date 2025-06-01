@@ -1,0 +1,19 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: register_conditional_model
+display_name: Registro condicional del modelo
+version: 5
+type: command
+inputs:
+  metrics_input:
+    type: uri_file
+  model_input:
+    type: mlflow_model
+  model_name:
+    type: string
+code: ./src/register-model/
+environment: azureml:sklearn-azure-ai-env:4
+command: >-
+  python register-model.py
+  --metrics_input ${{inputs.metrics_input}}
+  --model_input ${{inputs.model_input}}
+  --model_name ${{inputs.model_name}}

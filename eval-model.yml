@@ -1,7 +1,7 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
 name: eval_model_metrics_etapa_5_ces
 display_name: Evaluación de Modelo y exposición de Métricas
-version: 1
+version: 2
 type: command
 inputs:
   input_data: 
